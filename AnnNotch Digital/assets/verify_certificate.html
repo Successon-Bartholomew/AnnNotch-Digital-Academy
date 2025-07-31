@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechSkills Academy - Certificate Verification</title>
+    <title>AnnNotch Digital Academy - Certificate Verification</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -191,14 +191,14 @@
     <div class="container">
         <div class="header">
             <h1>Certificate Verification</h1>
-            <p>Verify the authenticity of certificates issued by TechSkills Academy</p>
+            <p>Verify the authenticity of certificates issued by AnnNotch Digital Academy</p>
         </div>
         
         <div class="content">
             <div class="verification-form">
                 <div class="form-group">
-                    <label for="certificate-id">Certificate ID*</label>
-                    <input type="text" id="certificate-id" placeholder="Enter certificate number (e.g. TS-2023-12345)" required>
+                    <label for="certificate-name">Certificate Owner Name*</label>
+                    <input type="text" id="certificate-name" placeholder="Enter certificate name (e.g. John Philip Eze)" required>
                 </div>
                 
                 <button class="btn" id="verify-btn">Verify Certificate</button>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Student Name:</span>
-                        <span id="valid-name">John Doe</span>
+                        <span id="valid-name">John Philip Eze</span>
                     </div>
                     <div class="detail-row">
                         <span class="detail-label">Course Completed:</span>
@@ -228,8 +228,8 @@
             
             <div class="result invalid" id="invalid-result">
                 <h3><span class="result-icon">✗</span> Invalid Certificate</h3>
-                <p>The certificate ID you entered could not be found in our records. Please check the number and try again.</p>
-                <p>If you believe this is an error, please contact our support team at certificates@techskillsacademy.com</p>
+                <p>The certificate name you entered could not be found in our records. Please check the name and try again.</p>
+                <p>If you believe this is an error, please contact our support team at certificates@annnotchdigitalacademy.com</p>
             </div>
             
             <div class="sample-certificate">
@@ -241,15 +241,15 @@
     </div>
     
     <script>
-        // Sample certificate database (in a real app, this would be an API call)
+        // Sample certificate database 
         const certificateDatabase = {
-            "TS-2023-12345": {
-                name: "John Doe",
+            "John Philip Eze": {
+                name: "John Philip Eze",
                 course: "Web Development Bootcamp",
                 date: "June 15, 2023",
                 valid: true
             },
-            "TS-2023-67890": {
+            "Jane Smith": {
                 name: "Jane Smith",
                 course: "Data Science Fundamentals",
                 date: "July 22, 2023",
@@ -258,7 +258,7 @@
         };
         
         document.getElementById('verify-btn').addEventListener('click', function() {
-            const certificateId = document.getElementById('certificate-id').value.trim();
+            const certificateName = document.getElementById('certificate-name').value.trim();
             const validResult = document.getElementById('valid-result');
             const invalidResult = document.getElementById('invalid-result');
             
@@ -266,8 +266,8 @@
             validResult.style.display = 'none';
             invalidResult.style.display = 'none';
             
-            if (!certificateId) {
-                alert('Please enter a certificate ID');
+            if (!certificateName) {
+                alert('Please enter a certificate name');
                 return;
             }
             
@@ -277,7 +277,7 @@
             
             setTimeout(() => {
                 // Check against database
-                if (certificateDatabase[certificateId] && certificateDatabase[certificateId].valid) {
+                if (certificateDatabase[certificateName] && certificateDatabase[certificateName].valid) {
                     const cert = certificateDatabase[certificateId];
                     
                     // Update valid result with actual data
@@ -299,7 +299,7 @@
         });
         
         // Allow Enter key to trigger verification
-        document.getElementById('certificate-id').addEventListener('keypress', function(e) {
+        document.getElementById('certificate-name').addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 document.getElementById('verify-btn').click();
             }
