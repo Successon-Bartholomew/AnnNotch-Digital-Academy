@@ -278,7 +278,7 @@
             setTimeout(() => {
                 // Check against database
                 if (certificateDatabase[certificateName] && certificateDatabase[certificateName].valid) {
-                    const cert = certificateDatabase[certificateId];
+                    const cert = certificateDatabase[certificateName];
                     
                     // Update valid result with actual data
                     document.getElementById('valid-name').textContent = cert.name;
